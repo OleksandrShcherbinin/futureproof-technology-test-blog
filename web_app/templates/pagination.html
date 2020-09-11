@@ -2,24 +2,24 @@
 {% if is_paginated %}
 <div class="page-pagination mt-20">
     <ul>
-        <li><a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
+        <li><a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
         {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
         {% endif %}
         {% for i in paginator.page_range %}
             {% if forloop.counter|add:5 > page_obj.number and forloop.counter < page_obj.number|add:5 %}
                 {% if page_obj.number == i %}
                     <li class="active"><a> {{ i }}</a></li>
                 {% else %}
-                    <li><a href="?page={{i}}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}">{{ i }}</a></li>
+                    <li><a href="?page={{i}}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}">{{ i }}</a></li>
                 {% endif %}
             {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
-            <li><a href="?page={{page_obj.next_page_number}}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
+            <li><a href="?page={{page_obj.next_page_number}}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
         {% endif %}
 
-        <li><a href="?page={{paginator.num_pages}}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
+        <li><a href="?page={{paginator.num_pages}}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
 
     </ul>
 </div>
