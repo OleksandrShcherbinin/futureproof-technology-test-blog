@@ -11,6 +11,10 @@ Run with::
 
 git clone ...
 
+don't forget to create you web.env file(look at web.env.example)
+
+don't forget to set DEBUG=False in production
+
 sudo docker-compose build
 
 sudo docker-compose up -d

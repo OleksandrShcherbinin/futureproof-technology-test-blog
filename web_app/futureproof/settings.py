@@ -205,7 +205,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-# My proxy service API
+# My proxy service API writen on aiohttp platform for crawling privacy
 APROXY_API_URL = 'http://aproxy.py4you.com/get_random'
 APROXY_USERNAME = os.getenv('APROXY_USERNAME')
 APROXY_PASSWORD = os.getenv('APROXY_PASSWORD')
