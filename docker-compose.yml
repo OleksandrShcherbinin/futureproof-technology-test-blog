@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  db:
+    container_name: blog_db
+    image: postgres
+    restart: always
+    env_file: ./web.env
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    container_name: blog_redis
+    image: redis
+    restart: always
+    ports:
+      - 6380:6379
+
+  web_app:
+    build: ./web_app
+    container_name: blog_web_app
+    env_file: ./web.env
+    command: /code/run_web.sh
+    volumes:
+      - ./web_app:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - redis
+    restart: always
+
+  nginx:
+    container_name: blog_nginx
+    build: ./nginx
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web_app
+    restart: always
+    volumes:
+      - ./web_app/static_root:/code/static_root
+      - ./web_app/media:/code/media
+      - ./nginx/logs:/var/log/nginx
+
+volumes:
+  postgres_data:
