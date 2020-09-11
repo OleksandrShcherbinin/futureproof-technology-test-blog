@@ -10,6 +10,9 @@ Install and Run
 Run with::
 
 git clone ...
+
 sudo docker-compose build
+
 sudo docker-compose up -d
+
 Done

@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
+from blog.views import *
 
 urlpatterns = [
+    path('', IndexView.as_view(), name='index'),
+    path('<slug:slug>', PostView.as_view(), name='post'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
 ]

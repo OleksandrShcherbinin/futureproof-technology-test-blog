@@ -1,0 +1,43 @@
+{% load static %}
+    <!-- Header Section Start -->
+    <header class="header-section section position-static">
+        <div class="container-fluid">
+            <div class="row no-gutters align-items-center">
+                <div class="col-4 col-lg-2 col-xl-3">
+                    <!-- Logo Start -->
+                    <div class="header-logo header-logo-one mt-0">
+                        <a href="/">
+                            <img src="{% static 'images/logo.png' %}" alt="Olson">
+                        </a>
+                    </div><!-- Logo End -->
+                </div>
+
+                <div class="col col-lg-7 col-xl-6 d-none d-lg-block">
+                    <div class="main-menu mr-lg-100">
+                        <nav>
+                            <ul>
+                                <li class="menu-item"><a href="/">Home</a>
+                                </li>
+                                <li class="menu-item"><a href="{% url 'admin:index' %}">Login Register</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-8 col-lg-3 col-xl-3">
+                        <div class="shop-links-item header-account mr-lg-0">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'admin:index' %}"><img src="{% static 'images/icons/user.png' %}" alt="Login"></a>
+                            {% endif %}
+                        </div>
+
+                        <div class="shop-links-item header-menu-icon d-lg-none">
+                            <a href="javascript:void(0)" class="menu-toggle"><span class="bar"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->

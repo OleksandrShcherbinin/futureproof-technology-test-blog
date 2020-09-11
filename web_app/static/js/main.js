@@ -159,13 +159,13 @@
     /*--
         MailChimp
     -----------------------------------*/
-    $('#mc-form').ajaxChimp({
+    /*$('#mc-form').ajaxChimp({
         language: 'en',
         callback: mailChimpResponse,
         // ADD YOUR MAILCHIMP URL BELOW HERE!
         url: 'http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef'
 
-    });
+    });*/
 
     function mailChimpResponse(resp) {
 

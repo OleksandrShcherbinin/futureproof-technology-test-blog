@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'debug_toolbar',
     'blog',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'blog.contextprocessor.category_tags',
+                'blog.contextprocessor.freshest_posts',
             ],
         },
     },
@@ -178,6 +182,16 @@ LOGGING = {
     },
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_TIMEOUT = 3
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 REDIS_HOST = 'redis'
 REDIS_PORT = '6379'
 REDIS_LOCATION = f'redis://{REDIS_HOST}:{REDIS_PORT}'
@@ -190,6 +204,16 @@ CELERYBEAT_SCHEDULER = 'celery.schedulers.DatabaseScheduler'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+# My proxy service API
+APROXY_API_URL = 'http://aproxy.py4you.com/get_random'
+APROXY_USERNAME = os.getenv('APROXY_USERNAME')
+APROXY_PASSWORD = os.getenv('APROXY_PASSWORD')
+
+GOOGLE_BOT_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
+                  ' Chrome/60.0.3112.113 Safari/537.36'
+}
 
 
 def show_toolbar(request):
